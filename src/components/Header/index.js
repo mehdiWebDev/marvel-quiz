@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const Header = () => {
-    return (
-        <header>
-            <div className="banner-container">
-                <h1><a href="/">Marvel Quiz</a></h1>
+class Header extends Component {
+    render() {
+        return (
+            <div>
+
+                <div className='banner-container'>
+                    <h1> <a href='#' ></a> Marvel Quiz</h1>
+                </div>
+                
             </div>
-        </header>
-    )
+        );
+    }
 }
 
-export default Header
+export default Header;

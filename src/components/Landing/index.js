@@ -1,54 +1,74 @@
-import React, { useRef, useEffect, useState, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
 
-const Landing = () => {
+class Landing extends Component {
 
-    const [btn, setBtn] = useState(false);
 
-    const refWolverine = useRef(null);
+
+    constructor(props){
+
+        super(props)
+
+        this.state ={ renderbtn:false}
+    }
+
+   
+
+    showAnimation(e){
+   
+       
+        document.querySelector(".welcomePage").classList.add("startingImg")
+  
+        setTimeout(()=>{
+            document.querySelector(".welcomePage").classList.remove("startingImg")
+            this.setState( {renderbtn:true } )
+        },1000)
+    }
+
+
+    showletfAnimation(){
+        document.querySelector(".welcomePage").classList.add("leftImg")
+    }
+
+    showrightAnimation(){
+        document.querySelector(".welcomePage").classList.add("rightImg")
+    }
+
+    clearImg(){
+        document.querySelector(".welcomePage").classList.remove("leftImg")
+        document.querySelector(".welcomePage").classList.remove("rightImg")
+
+    }
+
+
+    componentDidMount(){
+      this.showAnimation();
+    }
+
+
+
+    render() {
+
+
+
     
-    useEffect(() => {
-        refWolverine.current.classList.add("startingImg");
-        setTimeout(() => {
-            refWolverine.current.classList.remove("startingImg");
-            setBtn(true)
-        }, 1000);
 
-    }, [])
+       
+        return (
+            <main className='welcomePage' >
 
-    const setLeftImg = () => {
-        refWolverine.current.classList.add("leftImg");
+                <div className="leftBox">
+
+                {this.state.renderbtn ?  <button className='btn-welcome' onMouseOver={this.showletfAnimation} onMouseOut={this.clearImg}> Inscription </button> : "" }
+                   
+                </div>
+
+                <div className="rightBox">
+                {this.state.renderbtn ?     <button className='btn-welcome'onMouseOver={this.showrightAnimation} onMouseOut={this.clearImg}> Connection </button> : "" }
+                </div>
+                
+            </main>
+        );
     }
-
-    const setRightImg = () => {
-        refWolverine.current.classList.add("rightImg");
-    }
-
-    const clearImg = () => {
-
-        if(refWolverine.current.classList.contains("leftImg")) {
-            refWolverine.current.classList.remove("leftImg");
-        } else if (refWolverine.current.classList.contains("rightImg")) {
-            refWolverine.current.classList.remove("rightImg");
-        }
-    }
-
-    const displayBtn = btn && (
-        <Fragment>
-            <div onMouseOver={setLeftImg} onMouseOut={clearImg} className="leftBox">
-                <Link className="btn-welcome" to="/signup">Inscription</Link>
-            </div>
-            <div onMouseOver={setRightImg} onMouseOut={clearImg}  className="rightBox">
-                <Link className="btn-welcome" to="/login">Connexion</Link>
-            </div>
-        </Fragment>
-    )
-
-    return (
-        <main ref={refWolverine} className="welcomePage">
-            { displayBtn }
-        </main>
-    )
 }
 
-export default Landing
+export default Landing;
