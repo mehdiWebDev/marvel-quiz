@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class Landing extends Component {
 
@@ -50,20 +51,17 @@ class Landing extends Component {
 
 
 
-    
-
-       
         return (
             <main className='welcomePage' >
 
                 <div className="leftBox">
 
-                {this.state.renderbtn ?  <button className='btn-welcome' onMouseOver={this.showletfAnimation} onMouseOut={this.clearImg}> Inscription </button> : "" }
+                {this.state.renderbtn ?  <Link to="signup" className='btn-welcome' onMouseOver={this.showletfAnimation} onMouseOut={this.clearImg}> Inscription </Link> : "" }
                    
                 </div>
 
                 <div className="rightBox">
-                {this.state.renderbtn ?     <button className='btn-welcome'onMouseOver={this.showrightAnimation} onMouseOut={this.clearImg}> Connection </button> : "" }
+                {this.state.renderbtn ?     <Link to="login" className='btn-welcome'onMouseOver={this.showrightAnimation} onMouseOut={this.clearImg}> Connection </Link> : "" }
                 </div>
                 
             </main>
