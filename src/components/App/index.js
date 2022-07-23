@@ -1,9 +1,7 @@
 import React from 'react';
 import { ReactDOM } from 'react-dom';
 import { BrowserRouter,Routes ,Route,Switch } from 'react-router-dom';
-import Header from '../Header'
 import Landing from '../Landing'
-import Footer from '../Footer'
 import Welcom from '../Welcom';
 import Singup from '../Signup';
 import ErrorPage from '../ErrorPage';
